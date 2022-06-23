@@ -31,10 +31,13 @@ class Search(unittest.TestCase):
     def test_search_button_enabled(self):
       button = self.driver.find_element(By.CLASS_NAME, "button")
 
-    def test_count_of_promo_images(self): # contara el numero de fotos en el banner de promo
+    def test_count_of_promo_images(self): # ? contara el numero de fotos en el banner de promo
       banner_list = self.driver.find_element(By.CLASS_NAME, "promos")
-      banners = banner_list.find_elements(By.TAG_NAME, 'img') # cuenta los tags "img" dentro del banner "promos'"
-      self.assertEqual(3, len(banners)) # verifica si son 3 las imagenes del banner comparado con el largo del banner
+      banners = banner_list.find_elements(By.TAG_NAME, 'img') # ? cuenta los tags "img" dentro del banner "promos'"
+      self.assertEqual(3, len(banners)) # ? verifica si son 3 las imagenes del banner comparado con el largo del banner
+
+    def test_vip_promo(self):
+        vip_promo = self.driver.find_element(By.XPATH,"//*[@id='top']/body/div/div[2]/div[2]/div/div/div[2]/div/ul/li[4]/a/img")
 
     def tearDown(self):
         self.driver.quit() # cierra la ventana para evitar el consumo de recursos
