@@ -15,7 +15,7 @@ class Search(unittest.TestCase):
         # establecemos la referencia del driver
         self.driver = webdriver.Chrome(service=s)
         driver = self.driver
-        driver.get("https://demo.onestepcheckout.com/")
+        driver.get("https://demo.onestepcheckout.com/") # sujeto de pruebas
         driver.maximize_window()
         driver.implicitly_wait(5) # ? hace que espere 5 segundos
 
@@ -23,13 +23,21 @@ class Search(unittest.TestCase):
       search_field = self.driver.find_element(By.ID, "search") # ID "search" viene de la pagina web que queremos testear.
 
     def test_search_text_field_by_name(self):
-      search_field = self.driver.find_element(By.NAME, "q")
+      search_field = self.driver.find_element(By.NAME, "q") # 'q' es el nombre de la etiqueta que estamos testeando
 
     def test_search_text_field_class_name(self):
-      search_field = self.driver.find_element(By.CLASS_NAME, "input-text")
+      search_field = self.driver.find_element(By.CLASS_NAME, "input-text") 
+
+    def test_search_button_enabled(self):
+      button = self.driver.find_element(By.CLASS_NAME, "button")
+
+    def test_count_of_promo_images(self): # contara el numero de fotos en el banner de promo
+      banner_list = self.driver.find_element(By.CLASS_NAME, "promos")
+      banners = banner_list.find_elements(By.TAG_NAME, 'img') # cuenta los tags "img" dentro del banner "promos'"
+      self.assertEqual(3, len(banners)) # verifica si son 3 las imagenes del banner comparado con el largo del banner
 
     def tearDown(self):
         self.driver.quit() # cierra la ventana para evitar el consumo de recursos
 
 if __name__ == '__main__':
-    unittest.main(verbosity = 2)
+    unittest.main(verbosity = 2) # verbosity = 2 indica el nivel de detalle que la consola nos regresara.
