@@ -1,4 +1,4 @@
-import unittest
+import unittest # ? Esto nos da un reporte de las pruebas en la consola.
 from pyunitreport import HTMLTestRunner
 from selenium import webdriver
 
@@ -38,6 +38,9 @@ class Search(unittest.TestCase):
 
     def test_vip_promo(self):
         vip_promo = self.driver.find_element(By.XPATH,"//*[@id='top']/body/div/div[2]/div[2]/div/div/div[2]/div/ul/li[4]/a/img")
+
+    def test_shopping_cart (self):
+      shopping_cart_icon = self.driver.find_element(By.CSS_SELECTOR, "div.header-minicart span.icon")
 
     def tearDown(self):
         self.driver.quit() # cierra la ventana para evitar el consumo de recursos
