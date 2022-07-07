@@ -22,7 +22,7 @@ class SearchTests(unittest.TestCase):
 
     def test_search_tee(self):
       driver = self.driver
-      search_field = driver.find_element_by_class_name('q')
+      search_field = driver.find_element(By.NAME, 'q')
       search_field.clear()
 
       search_field.send_keys('tee')
