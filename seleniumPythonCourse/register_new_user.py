@@ -24,7 +24,7 @@ class RegisterNewUser(unittest.TestCase):
 
     self.assertEqual('Create New Customer Account', driver.title) # ? Esto verifica si el titulo de la ventana es igual al titulo de la ventana de nuestro driver. 
 
-    first_name = driver.find_element(By.ID, 'firstname')
+    first_name = driver.find_element(By.ID, 'firstname') # Aqui seleccionamos todos los campos que vamos a testear
     middle_name = driver.find_element(By.ID, 'middlename') 
     last_name = driver.find_element(By.ID, 'lastname')
     email_address = driver.find_element(By.ID, 'email_address') 
@@ -32,6 +32,15 @@ class RegisterNewUser(unittest.TestCase):
     password = driver.find_element(By.ID, 'password')
     confirm_password = driver.find_element(By.ID, 'confirmation')
     submit_button = driver.find_element(By.XPATH, '/html/body/div/div[2]/div[2]/div/div/div[2]/form/div[2]/button/span/span')
+
+    self.assertTrue(first_name.is_enabled()) # Aqui verificamos que los campos esten habilidatos (enabled)
+    self.assertTrue(middle_name.is_enabled()) 
+    self.assertTrue(last_name.is_enabled()) 
+    self.assertTrue(email_address.is_enabled()) 
+    self.assertTrue(news_letter_subscription.is_enabled()) 
+    self.assertTrue(password.is_enabled()) 
+    self.assertTrue(confirm_password.is_enabled()) 
+    self.assertTrue(submit_button.is_enabled()) 
 
   def tearDown(self):
     self.driver.implicitly_wait(3)
