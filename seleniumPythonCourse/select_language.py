@@ -1,6 +1,4 @@
-from lib2to3.pgen2 import driver
 from select import select
-from typing_extensions import Self
 import unittest
 from selenium import webdriver
 
@@ -11,7 +9,7 @@ from selenium.webdriver.chrome.service import Service
 # todo: Con esto podemos selecionar los lenguajes 
 from selenium.webdriver.support.ui import Select
 
-class LanguageOptions(unittest, unittest.TestCase):
+class LanguageOptions(unittest.TestCase):
   
   def setUp(self):
     self.driver = webdriver.Chrome(executable_path= './chromedriver')
@@ -41,8 +39,8 @@ class LanguageOptions(unittest, unittest.TestCase):
     select_language = Select(self.driver.find_element(By.ID, 'select-language'))
     select_language.select_by_index(0) # * aqui regresamos la pagina a ingles, [0] porque ingles es el primero en la lista.
   
-  # def tearDown(self):
-  #   self.driver.quit()  # cierra la ventana para evitar el consumo de recursos
+  def tearDown(self):
+    self.driver.quit()  # cierra la ventana para evitar el consumo de recursos
 
 
 if __name__ == '__main__':
