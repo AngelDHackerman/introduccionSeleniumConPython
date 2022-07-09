@@ -43,7 +43,7 @@ class Search(unittest.TestCase):
       shopping_cart_icon = self.driver.find_element(By.CSS_SELECTOR, "div.header-minicart span.icon")
 
     def tearDown(self):
-        self.driver.quit() # cierra la ventana para evitar el consumo de recursos
+      self.driver.quit() # cierra la ventana para evitar el consumo de recursos
 
 if __name__ == '__main__':
-    unittest.main(verbosity = 2) # verbosity = 2 indica el nivel de detalle que la consola nos regresara.
+  unittest.main(verbosity = 2) # verbosity = 2 indica el nivel de detalle que la consola nos regresara.
