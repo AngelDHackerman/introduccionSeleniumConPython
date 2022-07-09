@@ -24,7 +24,7 @@ class CompareProducts(unittest.TestCase):
     driver.find_element(By.CLASS_NAME, 'link-compare').click() # selecionamos la opcion de 'comparar' las camisas en nuestra pagina
     driver.find_element(By.LINK_TEXT, 'Clear All').click() # Limpiamos las comparaciones que hizo la pagina 
 
-    alert = driver.switch_to_alert()  # ? Cambianos la atencion del navegador al alert
+    alert = driver._switch_to.alert  # ? Cambianos la atencion del navegador al alert
     alert_text = alert.text
 
     # Aqui validamos que el texto que le pasamos sea igual al texto que nos muestra el alert en la pagina.
