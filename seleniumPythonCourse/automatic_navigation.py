@@ -19,7 +19,7 @@ class NavigationTest(unittest.TestCase):
 
     search_field = driver.find_element(By.NAME, 'q')
     search_field.clear() # limpiamos lo que pueda estar en la barra de busqueda
-    search_field('platzi') # pasamos que queremos buscar en google
+    search_field.send_keys('platzi') # pasamos que queremos buscar en google
     search_field.submit() # damos "click" en el boton de buscar
 
     driver.back()   # ? mueve hacia atras del historial
