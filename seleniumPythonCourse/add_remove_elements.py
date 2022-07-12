@@ -32,7 +32,7 @@ class AddRemoveElements(unittest.TestCase):
         delete_button = driver.find_element(By.XPATH, '//*[@id="elements"]/button[1]')
         delete_button.click()
       except:
-        print('You are trying to delet more elements than the existent')
+        print('You are trying to delete more elements than the existent')
         break
 
     if total_elements > 0:
