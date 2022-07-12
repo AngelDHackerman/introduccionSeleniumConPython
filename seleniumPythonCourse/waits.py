@@ -10,10 +10,21 @@ class ExplicitWaitTest(unittest.TestCase):
     self.driver.get('http://demo-store.seleniumacademy.com')
 
   def test_account_link(self):
-    pass
+    WebDriverWait(self.driver, 10).until(lambda s: s.find_element(By.ID, 'select-language').get_attribute('lenght') == '3')
+
+    account = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.LINK_TEXT, 'ACCOUNT'))) 
+    account.click()
 
   def test_create_new_customer(self):
-    pass
+    self.driver.find_element(By.LINK_TEXT, 'ACCOUNT').click()
+
+    my_account = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(By.LINK_TEXT, 'My account'))
+    my_account.click()
+
+    create_account_button = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(By.LINK_TEXT, 'CREATE AN ACCOUNT'))
+    create_account_button.click()
+
+    WebDriverWait(self.driver, 10).until(EC.title_contains('Create New Customer Account'))
 
   def tearDown(self):
     self.driver.quit() # cierra la ventana para evitar el consumo de recursos
