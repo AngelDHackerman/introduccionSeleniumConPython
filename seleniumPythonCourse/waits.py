@@ -1,5 +1,8 @@
 import unittest
 from selenium import webdriver
+from selenium.webdriver.common.by import By 
+from selenium.webdriver.support.ui import WebDriverWait  # todo: esto nos permite usar las expected conditions. 
+from selenium.webdriver.support import expected_conditions as EC # todo: esto nos permite usar las expected conditions. 
 
 class ExplicitWaitTest(unittest.TestCase):
   def setUp(self):
