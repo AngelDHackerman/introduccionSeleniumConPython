@@ -38,6 +38,8 @@ class AddRemoveElements(unittest.TestCase):
     if total_elements > 0:
       print(f"There are {total_elements} elements on screen") # todo: print(f"Hola {interpolation}") Asi se hace el string interpolation en python
 
+    sleep(3)
+
   def tearDown(self):
     self.driver.close()
 
