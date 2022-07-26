@@ -26,12 +26,14 @@ class Typos(unittest.TestCase):
     correct_text = "Sometimes you'll see a typo, other times you won't."
 
     while text_to_check != correct_text:
+      paragraph_to_check = driver.find_element(By.CSS_SELECTOR, '#content > div > p:nth-child(3)')
+      text_to_check = paragraph_to_check.text
       driver.refresh()
 
     while not found: 
       if text_to_check == correct_text:
         tries += 1
-        # driver.refresh()
+        # // driver.refresh()
         found = True
 
     self.assertEqual(found, True)
