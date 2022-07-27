@@ -1,8 +1,11 @@
+from itertools import product
 from lib2to3.pgen2 import driver
 import unittest
 from ddt import ddt, data, unpack
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 
+@ddt
 class SearchDDT(unittest.TestCase):
   def setUp(self):
     self.driver = webdriver.Chrome(executable_path= "./chromedriver")
@@ -11,8 +14,23 @@ class SearchDDT(unittest.TestCase):
     driver.maximize_window()
     driver.get('http://demo-store.seleniumacademy.com')
 
-  def test_search_ddt(sefl):
-    pass
+  @data(('dress', 5), ('music', 5))
+  @unpack
+  def test_search_ddt(self, search_value, expected_count):
+    driver = self.driver
+
+    search_field = driver.find_element(By.NAME, 'q')
+    search_field.clear()
+    search_field.send_keys(search_value)
+    search_field.submit()
+
+    products = driver.find_elements(By.XPATH, '//h2[@class="product-name"]/a')
+    print(f'Found {len(products)} products')
+
+    for product in products:
+      print(product.text)
+
+    self.assertEqual(expected_count, len(products))
 
   def tearDown(self):
     self.driver.quit()
